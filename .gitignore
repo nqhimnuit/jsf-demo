@@ -4,3 +4,9 @@
 # Ignore Gradle build output directory
 build
 .idea
+.classpath
+.project
+bin/main/log4j2.properties
+.settings/org.eclipse.buildship.core.prefs
+*.class
+.vscode

@@ -1,6 +1,7 @@
 package jsf.demo.controller;
 
-import javax.enterprise.context.RequestScoped;
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import org.apache.logging.log4j.LogManager;
@@ -10,8 +11,10 @@ import org.apache.logging.log4j.Logger;
  * @author AdNovum Informatik AG
  */
 @Named
-@RequestScoped
-public class LoginController {
+@SessionScoped
+public class LoginController implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private static final Logger LOG = LogManager.getLogger(LoginController.class);
 
