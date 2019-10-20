@@ -1,4 +1,4 @@
-<html xmlns:h="http://xmlns.jcp.org/jsf/html">
+<html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
 	<title>JSF Demo</title>
@@ -7,20 +7,28 @@
 <h:body>
 
 	<h:form>
-		<div>
-			<h:outputLabel for="txtUsername" value="username: " />
-			<h:inputText id="txtUsername" value="#{loginController.username}" />
-		</div>
-		<br />
-		<div>
-			<h:outputLabel for="txtPassword" value="password: " />
-			<h:inputText id="txtPassword" value="#{loginController.password}" />
-		</div>
-		<br />
-		<h:commandButton id="btnSubmit" value="Go to user-info page" action="user-info" />
-		<br />
-		<h:link value="Go to user-info page with this link" outcome="user-info.xhtml" />
+		<ol>
+			<li>
+				<h:link value="Restore View" outcome="phase1.xhtml" />
+			</li>
+			<li>
+				<h:link value="Apply Request Values" outcome="phase2.xhtml" />
+			</li>
+			<li>
+				<h:link value="Process Validations" outcome="phase3.xhtml" />
+			</li>
+			<li>
+				<h:link value="Update Model Values" outcome="phase4.xhtml" />
+			</li>
+			<li>
+				<h:link value="Invoke Application" outcome="phase5.xhtml" />
+			</li>
+			<li>
+				<h:link value="Render Response" outcome="phase6.xhtml" />
+			</li>
+		</ol>
 	</h:form>
 
 </h:body>
+
 </html>

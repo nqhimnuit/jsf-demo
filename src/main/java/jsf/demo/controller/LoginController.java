@@ -22,8 +22,10 @@ public class LoginController implements Serializable {
 
 	private String password;
 
-	public void getUserInfo() {
-		LOG.info("Username = " + username + " &&& Password = " + password);
+	public void checkUserInfo() throws Exception {
+		if (username == password) {
+			throw new Exception("Username and password must not be the same");
+		}
 	}
 
 	public String getUsername() {
@@ -31,6 +33,7 @@ public class LoginController implements Serializable {
 	}
 
 	public void setUsername(String username) {
+		LOG.info("setting username = {}", username);
 		this.username = username;
 	}
 
@@ -39,6 +42,7 @@ public class LoginController implements Serializable {
 	}
 
 	public void setPassword(String password) {
+		LOG.info("setting password = {}", password);
 		this.password = password;
 	}
 }
