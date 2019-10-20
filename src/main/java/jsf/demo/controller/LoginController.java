@@ -23,7 +23,7 @@ public class LoginController implements Serializable {
 	private String password;
 
 	public void checkUserInfo() throws Exception {
-		if (username == password) {
+		if (username.equals(password)) {
 			throw new Exception("Username and password must not be the same");
 		}
 	}
