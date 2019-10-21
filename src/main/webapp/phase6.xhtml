@@ -10,7 +10,8 @@
 		<div style="margin-top: 50px; margin-left: 50px;">
 			<div style="margin-top: 10px;">
 				<h:outputLabel for="txtUsername" value="username: " />
-				<h:inputText id="txtUsername" value="#{loginController.username}">
+				<h:inputText id="txtUsername" value="#{loginController.username}"
+					valueChangeListener="#{loginController.renderResponse()}">
 					<f:validateRegex pattern="[a-z]{5,}" />
 				</h:inputText>
 				<h:outputLabel for="txtUsername" value=" (>= 5 letters) " />
@@ -19,7 +20,7 @@
 
 			<div style="margin-top: 10px;">
 				<h:outputLabel for="txtPassword" value="password: " />
-				<h:inputText id="txtPassword" value="#{loginController.password}">
+				<h:inputText id="txtPassword" value="#{loginController.password}" immediate="true">
 					<f:validateLength minimum="8" />
 				</h:inputText>
 				<h:outputLabel for="txtPassword" value=" (>= 8 chars) " />

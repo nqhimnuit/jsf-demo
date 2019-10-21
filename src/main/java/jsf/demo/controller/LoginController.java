@@ -37,6 +37,11 @@ public class LoginController implements Serializable {
 		}
 	}
 
+	public void renderResponse() {
+		LOG.info("value change listener called!");
+		FacesContext.getCurrentInstance().renderResponse();
+	}
+
 	public String getUsername() {
 		return username;
 	}
