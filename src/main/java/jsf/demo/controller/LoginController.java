@@ -28,6 +28,7 @@ public class LoginController implements Serializable {
 	private String password;
 
 	public void checkUserInfo() throws Exception {
+		LOG.info("checking for user info...");
 		if (username.equals(password)) {
 			FacesMessage msg = new FacesMessage("Username and password must not be the same");
 			FacesContext context = FacesContext.getCurrentInstance();
@@ -35,6 +36,7 @@ public class LoginController implements Serializable {
 			context.addMessage(msgComponent.getClientId(context), msg);
 			context.renderResponse();
 		}
+		LOG.info("done >>> checking for user info");
 	}
 
 	public void renderResponse() {
