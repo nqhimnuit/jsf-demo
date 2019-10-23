@@ -10,12 +10,12 @@
 		<div style="margin-top: 50px; margin-left: 50px;">
 			<div style="margin-top: 10px;">
 				<h:outputLabel for="txtUsername" value="username: " />
-				<h:inputText id="txtUsername" value="#{loginController.username}"
-					valueChangeListener="#{loginController.renderResponse()}">
+				<h:inputText id="txtUsername" value="#{loginController.username}">
+					<f:ajax execute="txtUsername" event="keyup" render="msgErrorUsername lblUsername" />
 					<f:validateRegex pattern="[a-z]{5,}" />
 				</h:inputText>
 				<h:outputLabel for="txtUsername" value=" (>= 5 letters) " />
-				<h:message for="txtUsername" style="color:red" />
+				<h:message id="msgErrorUsername" for="txtUsername" style="color:red" />
 			</div>
 
 			<div style="margin-top: 10px;">
@@ -36,7 +36,7 @@
 				You have entered:
 				<ul>
 					<li>
-						<h:outputLabel value="username = ${loginController.username}" />
+						<h:outputLabel id="lblUsername" value="username = ${loginController.username}" />
 					</li>
 					<li>
 						<h:outputLabel value="password = ${loginController.password}" />
