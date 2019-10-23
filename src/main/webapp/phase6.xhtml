@@ -20,7 +20,8 @@
 
 			<div style="margin-top: 10px;">
 				<h:outputLabel for="txtPassword" value="password: " />
-				<h:inputText id="txtPassword" value="#{loginController.password}" immediate="true">
+				<!-- <h:inputText id="txtPassword" value="#{loginController.password}" immediate="true"> -->
+				<h:inputText id="txtPassword" value="#{loginController.password}">
 					<f:validateLength minimum="8" />
 				</h:inputText>
 				<h:outputLabel for="txtPassword" value=" (>= 8 chars) " />

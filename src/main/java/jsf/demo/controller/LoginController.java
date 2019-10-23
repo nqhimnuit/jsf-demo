@@ -3,7 +3,8 @@ package jsf.demo.controller;
 import java.io.Serializable;
 import java.util.Iterator;
 
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -16,7 +17,7 @@ import org.apache.logging.log4j.Logger;
  * @author AdNovum Informatik AG
  */
 @Named
-@SessionScoped
+@RequestScoped
 public class LoginController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
