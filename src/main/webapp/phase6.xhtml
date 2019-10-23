@@ -1,47 +1,67 @@
-<html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 	<title>JSF Demo</title>
+	<f:facet name="middle">
+		<h:outputStylesheet name="bootstrap/css/bootstrap.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<h:outputStylesheet name="css/my.css" />
+		<h:outputScript name="bootstrap/js/bootstrap.js" />
+	</f:facet>
 </h:head>
 
 <h:body>
 
 	<h:form>
-		<div style="margin-top: 50px; margin-left: 50px;">
-			<div style="margin-top: 10px;">
-				<h:outputLabel for="txtUsername" value="username: " />
-				<h:inputText id="txtUsername" value="#{loginController.username}">
-					<f:ajax execute="txtUsername" event="keyup" render="msgErrorUsername lblUsername" />
-					<f:validateRegex pattern="[a-z]{5,}" />
-				</h:inputText>
-				<h:outputLabel for="txtUsername" value=" (>= 5 letters) " />
-				<h:message id="msgErrorUsername" for="txtUsername" style="color:red" />
-			</div>
+		<!-- <div style="margin-top: 50px; margin-left: 50px;"> -->
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="form-group row form-horizontal">
+					<h:outputLabel for="txtUsername" value="Username" styleClass="col-sm-2 col-form-label" />
+					<div class="col-sm-3">
+						<h:inputText id="txtUsername" value="#{loginController.username}" styleClass="form-control"
+							a:placeholder="username">
+							<f:ajax execute="txtUsername" event="keyup" render="msgErrorUsername lblUsername" />
+							<f:validateRegex pattern="[a-z]{5,}" />
+						</h:inputText>
+					</div>
+					<h:outputLabel for="txtUsername" value="(>= 5 letters)" styleClass="col-sm-2 col-form-label" />
 
-			<div style="margin-top: 10px;">
-				<h:outputLabel for="txtPassword" value="password: " />
-				<!-- <h:inputText id="txtPassword" value="#{loginController.password}" immediate="true"> -->
-				<h:inputText id="txtPassword" value="#{loginController.password}">
-					<f:validateLength minimum="8" />
-				</h:inputText>
-				<h:outputLabel for="txtPassword" value=" (>= 8 chars) " />
-				<h:message id="msgPassword" for="txtPassword" style="color:red" />
-			</div>
+					<h:message id="msgErrorUsername" for="txtUsername" style="color:red"
+						styleClass="alert alert-success col-sm-5" />
+				</div>
 
-			<div style="margin-top: 10px;">
-				<h:commandButton id="btnSubmit" value="Submit" action="${loginController.checkUserInfo()}" />
-			</div>
+				<div class="form-group row">
+					<h:outputLabel for="txtPassword" value="Password" styleClass="col-sm-2 col-form-label" />
+					<!-- <h:inputText id="txtPassword" value="#{loginController.password}" immediate="true"> -->
+					<div class="col-sm-3">
+						<h:inputText id="txtPassword" value="#{loginController.password}" a:placeholder="password"
+							styleClass="form-control">
+							<f:validateLength minimum="8" />
+						</h:inputText>
+					</div>
+					<h:outputLabel for="txtPassword" value="(>= 8 chars)" styleClass="col-sm-2 col-form-label" />
+					<h:message id="msgPassword" for="txtPassword" style="color:red" styleClass="alert alert-success col-sm-5" />
+				</div>
 
-			<div style="margin-top: 10px;">
-				You have entered:
-				<ul>
-					<li>
-						<h:outputLabel id="lblUsername" value="username = ${loginController.username}" />
-					</li>
-					<li>
-						<h:outputLabel value="password = ${loginController.password}" />
-					</li>
-				</ul>
+				<div class="form-group row">
+					<h:commandButton id="btnSubmit" value="Submit" action="${loginController.checkUserInfo()}"
+						styleClass="btn btn-primary" />
+				</div>
+
+				<div class="form-group row">
+					You have entered:
+					<ul>
+						<li>
+							<h:outputLabel id="lblUsername" value="username = ${loginController.username}" />
+						</li>
+						<li>
+							<h:outputLabel value="password = ${loginController.password}" />
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</h:form>
