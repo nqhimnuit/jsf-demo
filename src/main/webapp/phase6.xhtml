@@ -16,10 +16,10 @@
 
 	<h:form>
 		<div class="container">
-			<div class="panel panel-primary">
+			<div class="jumbotron">
 				<div class="form-group row form-horizontal">
 					<h:outputLabel for="txtUsername" value="Username" styleClass="col-sm-2 col-form-label" />
-					<div class="col-sm-3">
+					<div class="col-sm-8">
 						<h:inputText id="txtUsername" value="#{loginController.username}" styleClass="form-control"
 							a:placeholder="username">
 							<f:ajax execute="txtUsername" event="keyup" render="msgError lblUsername" />
@@ -31,7 +31,7 @@
 
 				<div class="form-group row">
 					<h:outputLabel for="txtPassword" value="Password" styleClass="col-sm-2 col-form-label" />
-					<div class="col-sm-3">
+					<div class="col-sm-8">
 						<h:inputText id="txtPassword" value="#{loginController.password}" a:placeholder="password"
 							styleClass="form-control">
 							<f:validateLength minimum="8" />
