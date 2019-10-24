@@ -7,35 +7,30 @@
 	<f:facet name="middle">
 		<h:outputStylesheet name="bootstrap/css/bootstrap.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<h:outputStylesheet name="css/my.css" />
 		<h:outputScript name="bootstrap/js/bootstrap.js" />
+		<h:outputStylesheet name="css/my.css" />
 	</f:facet>
 </h:head>
 
 <h:body>
 
 	<h:form>
-		<!-- <div style="margin-top: 50px; margin-left: 50px;"> -->
 		<div class="container">
-			<div class="row justify-content-center">
+			<div class="panel panel-primary">
 				<div class="form-group row form-horizontal">
 					<h:outputLabel for="txtUsername" value="Username" styleClass="col-sm-2 col-form-label" />
 					<div class="col-sm-3">
 						<h:inputText id="txtUsername" value="#{loginController.username}" styleClass="form-control"
 							a:placeholder="username">
-							<f:ajax execute="txtUsername" event="keyup" render="msgErrorUsername lblUsername" />
+							<f:ajax execute="txtUsername" event="keyup" render="msgError lblUsername" />
 							<f:validateRegex pattern="[a-z]{5,}" />
 						</h:inputText>
 					</div>
 					<h:outputLabel for="txtUsername" value="(>= 5 letters)" styleClass="col-sm-2 col-form-label" />
-
-					<h:message id="msgErrorUsername" for="txtUsername" style="color:red"
-						styleClass="alert alert-success col-sm-5" />
 				</div>
 
 				<div class="form-group row">
 					<h:outputLabel for="txtPassword" value="Password" styleClass="col-sm-2 col-form-label" />
-					<!-- <h:inputText id="txtPassword" value="#{loginController.password}" immediate="true"> -->
 					<div class="col-sm-3">
 						<h:inputText id="txtPassword" value="#{loginController.password}" a:placeholder="password"
 							styleClass="form-control">
@@ -43,25 +38,27 @@
 						</h:inputText>
 					</div>
 					<h:outputLabel for="txtPassword" value="(>= 8 chars)" styleClass="col-sm-2 col-form-label" />
-					<h:message id="msgPassword" for="txtPassword" style="color:red" styleClass="alert alert-success col-sm-5" />
 				</div>
 
-				<div class="form-group row">
+				<div class="form-group">
 					<h:commandButton id="btnSubmit" value="Submit" action="${loginController.checkUserInfo()}"
-						styleClass="btn btn-primary" />
+						styleClass="btn btn-primary btn-lg" />
 				</div>
 
-				<div class="form-group row">
-					You have entered:
-					<ul>
-						<li>
-							<h:outputLabel id="lblUsername" value="username = ${loginController.username}" />
-						</li>
-						<li>
-							<h:outputLabel value="password = ${loginController.password}" />
-						</li>
-					</ul>
+				<div class="panel panel-default">
+					<div class="panel-heading">You have entered:</div>
+					<div class="panel-body">
+						<ul class="list-group">
+							<li class="list-group-item">
+								<h:outputLabel id="lblUsername" value="username = ${loginController.username}" />
+							</li>
+							<li class="list-group-item">
+								<h:outputLabel value="password = ${loginController.password}" />
+							</li>
+						</ul>
+					</div>
 				</div>
+				<h:messages id="msgError" styleClass="alert alert-danger alert-dismissible" />
 			</div>
 		</div>
 	</h:form>
