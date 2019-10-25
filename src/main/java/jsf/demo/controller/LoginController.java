@@ -5,7 +5,6 @@ import java.util.Iterator;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -28,25 +27,8 @@ public class LoginController implements Serializable {
 
 	private String password;
 
-	public void checkUserInfo() throws Exception {
-		LOG.info("checking for user info...");
-		if (username.equals(password)) {
-			FacesMessage msg = new FacesMessage("Username and password must not be the same");
-			FacesContext context = FacesContext.getCurrentInstance();
-			UIComponent msgComponent = findComponent(context.getViewRoot(), "txtPassword");
-			context.addMessage(msgComponent.getClientId(context), msg);
-			context.renderResponse();
-		}
-		LOG.info("done >>> checking for user info");
-	}
-
-	public void renderResponse() {
-		LOG.info("value change listener called!");
-		FacesContext.getCurrentInstance().renderResponse();
-		// FacesContext.getCurrentInstance().responseComplete();
-	}
-
 	public String getUsername() {
+		LOG.info("getting username = {}", username);
 		return username;
 	}
 
@@ -56,12 +38,27 @@ public class LoginController implements Serializable {
 	}
 
 	public String getPassword() {
+		LOG.info("getting password = {}", password);
 		return password;
 	}
 
 	public void setPassword(String password) {
 		LOG.info("setting password = {}", password);
 		this.password = password;
+	}
+
+	public void checkUserInfo() throws Exception {
+		LOG.info("checking for user info...");
+		if (username.equals(password)) {
+			addErrorToMessage("Username and password must not be the same");
+			resetInput();
+		}
+		LOG.info("done >>> checking for user info");
+	}
+
+	public void customEventHandler() {
+		LOG.info("value change listener called!");
+		FacesContext.getCurrentInstance().responseComplete();
 	}
 
 	private UIComponent findComponent(UIComponent c, String id) {
@@ -76,5 +73,18 @@ public class LoginController implements Serializable {
 			}
 		}
 		return null;
+	}
+
+	private void addErrorToMessage(String errorMsg) {
+		FacesMessage msg = new FacesMessage(errorMsg);
+		FacesContext context = FacesContext.getCurrentInstance();
+		UIComponent msgComponent = findComponent(context.getViewRoot(), "txtPassword");
+		context.addMessage(msgComponent.getClientId(context), msg);
+		context.validationFailed();
+	}
+
+	private void resetInput() {
+		username = "";
+		password = "";
 	}
 }

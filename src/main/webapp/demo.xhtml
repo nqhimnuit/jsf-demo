@@ -13,7 +13,8 @@
 				<h:inputText id="txtUsername" value="#{loginController.username}">
 					<f:validateRegex pattern="[a-z]{5,}" />
 				</h:inputText>
-				<h:outputLabel for="txtUsername" value=" (>= 5 letters)" />
+				<h:outputLabel for="txtUsername" value=" (>= 5 letters) " />
+				<h:message id="msgErrorUsername" for="txtUsername" style="color:red" />
 			</div>
 
 			<div style="margin-top: 10px;">
@@ -21,11 +22,24 @@
 				<h:inputText id="txtPassword" value="#{loginController.password}">
 					<f:validateLength minimum="8" />
 				</h:inputText>
-				<h:outputLabel for="txtPassword" value=" (>= 8 chars)" />
+				<h:outputLabel for="txtPassword" value=" (>= 8 chars) " />
+				<h:message id="msgPassword" for="txtPassword" style="color:red" />
 			</div>
 
 			<div style="margin-top: 10px;">
-				<h:commandButton id="btnSubmit" value="Submit" />
+				<h:commandButton id="btnSubmit" value="Submit" action="${loginController.checkUserInfo()}" />
+			</div>
+
+			<div style="margin-top: 10px;">
+				You have entered:
+				<ul>
+					<li>
+						<h:outputLabel id="lblUsername" value="username = ${loginController.username}" />
+					</li>
+					<li>
+						<h:outputLabel value="password = ${loginController.password}" />
+					</li>
+				</ul>
 			</div>
 		</div>
 	</h:form>
