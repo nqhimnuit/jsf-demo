@@ -1,32 +1,39 @@
 <html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-	<title>JSF Demo</title>
+	<title>JSF Simple Demo</title>
 </h:head>
 
 <h:body>
 
 	<h:form>
-		<ol>
-			<li>
-				<h:link value="Restore View" outcome="phase1.xhtml" />
-			</li>
-			<li>
-				<h:link value="Apply Request Values" outcome="phase2.xhtml" />
-			</li>
-			<li>
-				<h:link value="Process Validations" outcome="phase3.xhtml" />
-			</li>
-			<li>
-				<h:link value="Update Model Values" outcome="phase4.xhtml" />
-			</li>
-			<li>
-				<h:link value="Invoke Application" outcome="phase5.xhtml" />
-			</li>
-			<li>
-				<h:link value="Render Response" outcome="phase6.xhtml" />
-			</li>
-		</ol>
+		<div style="margin-top: 50px; margin-left: 50px;">
+			<div style="margin-top: 10px;">
+				<h:outputLabel for="txtUsername" value="username: " />
+				<h:inputText id="txtUsername" />
+			</div>
+
+			<div style="margin-top: 10px;">
+				<h:outputLabel for="txtPassword" value="password: " />
+				<h:inputText id="txtPassword" />
+			</div>
+
+			<div style="margin-top: 10px;">
+				<h:commandButton id="btnSubmit" value="Submit" />
+			</div>
+
+			<div style="margin-top: 10px;">
+				You have entered:
+				<ul>
+					<li>
+						<h:outputLabel value="username = " />
+					</li>
+					<li>
+						<h:outputLabel value="password = " />
+					</li>
+				</ul>
+			</div>
+		</div>
 	</h:form>
 
 </h:body>
